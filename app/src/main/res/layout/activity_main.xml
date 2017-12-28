@@ -19,16 +19,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
-            android:id="@+id/rbtnName"
-            android:layout_width="88dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:text="Имена"
-            app:layout_constraintLeft_toRightOf="@+id/rbtnPass"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <RadioButton
             android:id="@+id/rbtnNum"
             android:layout_width="81dp"
             android:layout_height="wrap_content"
@@ -46,6 +36,16 @@
             android:layout_weight="1"
             android:text="Пароль"
             app:layout_constraintLeft_toRightOf="@+id/rbtnNum"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioButton
+            android:id="@+id/rbtnName"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="Имена"
+            app:layout_constraintLeft_toRightOf="@+id/rbtnPass"
             app:layout_constraintTop_toTopOf="parent" />
 
         <RadioButton
@@ -81,7 +81,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/chkMap"
         app:layout_constraintLeft_toRightOf="@+id/mainGroup"
-        android:layout_marginLeft="8dp" />
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp" />
 
     <CheckBox
         android:id="@+id/chkMap"
@@ -110,7 +111,6 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/chkCont"
-        android:layout_marginBottom="0dp"
         app:layout_constraintBottom_toTopOf="@+id/seekNumVar" />
 
     <SeekBar
@@ -146,22 +146,17 @@
         android:id="@+id/layNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
         android:orientation="vertical"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekNumVar"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintVertical_bias="0.51">
 
         <Switch
-            android:id="@+id/switch1"
+            android:id="@+id/swBool"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Целые/Дробь"
@@ -169,7 +164,7 @@
             tools:layout_editor_absoluteY="868dp" />
 
         <EditText
-            android:id="@+id/editMinNum"
+            android:id="@+id/editNumMin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="3"
@@ -177,12 +172,12 @@
 
         <SeekBar
             android:id="@+id/seekNumMin"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            style="@style/Widget.AppCompat.SeekBar"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginStart="0dp"
-            android:max="10"
+            android:max="100"
             android:progress="3"
             app:layout_constraintLeft_toLeftOf="parent"
             tools:layout_editor_absoluteY="905dp" />
@@ -194,7 +189,7 @@
             android:text="min" />
 
         <EditText
-            android:id="@+id/editMaxNum"
+            android:id="@+id/editNumMax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="7"
@@ -202,7 +197,7 @@
 
         <SeekBar
             android:id="@+id/seekNumMax"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            style="@style/Widget.AppCompat.SeekBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="0dp"
@@ -210,8 +205,8 @@
             android:layout_marginRight="0dp"
             android:layout_marginStart="0dp"
             android:layout_weight="1"
-            android:max="10"
-            android:progress="3"
+            android:max="10000"
+            android:progress="3000"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@+id/seekNumMin"
             app:layout_constraintRight_toRightOf="parent"
@@ -222,84 +217,135 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="max" />
+
     </LinearLayout>
 
-    <LinearLayout
+    <TableLayout
         android:id="@+id/layPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="-211dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekNumVar">
+        app:layout_constraintTop_toBottomOf="@+id/seekNumVar"
+        app:layout_constraintVertical_bias="0.992">
 
-        <RadioButton
-            android:id="@+id/rbtnPassGraf"
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Графический" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView5"
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Длинна пароля" />
+        </TableRow>
+
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Длинна пароля" />
+            android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/editPassLen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="2"
-            android:inputType="number" />
+            <SeekBar
+                android:id="@+id/seekPassLen"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:max="32"
+                android:padding="0dp"
+                android:paddingBottom="0dp"
+                android:paddingEnd="0dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:paddingStart="0dp"
+                android:paddingTop="0dp"
+                android:progress="7" />
 
-        <SeekBar
-            android:id="@+id/seekBar7"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:max="32"
-            android:progress="7" />
+            <EditText
+                android:id="@+id/editPassLen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="2"
+                android:inputType="number" />
+        </TableRow>
 
-        <RadioButton
-            android:id="@+id/rbtnPassNum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Цифры" />
-
-        <RadioButton
-            android:id="@+id/rbtnPassChar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Буквы" />
-
-        <RadioButton
-            android:id="@+id/rbtnPassNumChar"
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Цифры и Буквы" />
+            android:layout_height="match_parent">
 
-        <RadioButton
-            android:id="@+id/rbtnPassCustom"
+            <RadioGroup
+                android:id="@+id/passGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rbtnPassChar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Буквы"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/rbtnPassCustom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Настраеваемый"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/rbtnPassNumCharSym"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Цифры буквы симолы"
+                    android:textSize="12sp"
+                    tools:layout_editor_absoluteX="8dp"
+                    tools:layout_editor_absoluteY="-31dp" />
+
+                <RadioButton
+                    android:id="@+id/rbtnPassNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Цифры"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/rbtnPassGraf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Графический"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/rbtnPassNumChar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Цифры и Буквы"
+                    android:textSize="12sp" />
+            </RadioGroup>
+
+        </TableRow>
+
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Настраеваемый" />
+            android:layout_height="match_parent">
 
-        <RadioButton
-            android:id="@+id/rbtnPassNumCharSym"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Цифры буквы симолы"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="-31dp" />
-
-        <Switch
-            android:id="@+id/swPassTwoReg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Два регистра" />
-
-    </LinearLayout>
+            <Switch
+                android:id="@+id/swPassTwoReg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Два регистра" />
+        </TableRow>
+    </TableLayout>
 
     <LinearLayout
         android:id="@+id/layName"
@@ -307,19 +353,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/layPass"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekNumVar">
 
         <EditText
-            android:id="@+id/editNames"
+            android:id="@+id/editNameText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="100"
-            android:inputType="textPersonName"
-            android:text="Дима, Вася, Митя, Игорь, Лена, Таня, Аня, Оля, Маша"
-            android:visibility="visible"
-            tools:layout_editor_absoluteX="-4dp"
-            tools:layout_editor_absoluteY="46dp" />
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:text="Дима, Вася, Митя, Игорь, Лена, Таня, Аня, Оля, Маша" />
     </LinearLayout>
 
     <LinearLayout
