@@ -6,101 +6,101 @@
     android:layout_height="match_parent"
     tools:context="bpk.light.app_10.MainActivity">
 
-    <RadioButton
-        android:id="@+id/rbtnNum"
-        android:layout_width="81dp"
-        android:layout_height="32dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Число"
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="207dp"
+        android:layout_height="199dp"
+        android:visibility="visible"
+        app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="8dp" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <RadioButton
-        android:id="@+id/rbtnPass"
-        android:layout_width="94dp"
-        android:layout_height="32dp"
-        android:text="Пароль"
-        android:layout_marginStart="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/rbtnNum"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp" />
+        <RadioButton
+            android:id="@+id/rbtnNum"
+            android:layout_width="81dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Число"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioButton
-        android:id="@+id/rbtnName"
-        android:layout_width="88dp"
-        android:layout_height="30dp"
-        android:text="Имена"
-        android:layout_marginStart="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/rbtnPass"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp" />
+        <RadioButton
+            android:id="@+id/rbtnPass"
+            android:layout_width="94dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Пароль"
+            app:layout_constraintLeft_toRightOf="@+id/rbtnNum"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioButton
-        android:id="@+id/rbtnMap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:editable="false"
-        android:enabled="false"
-        android:text="Карты"
-        tools:layout_editor_absoluteX="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/rbtnNum" />
+        <RadioButton
+            android:id="@+id/rbtnName"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Имена"
+            app:layout_constraintLeft_toRightOf="@+id/rbtnPass"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioButton
-        android:id="@+id/rbtnCont"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="Сталицы и Страны"
-        tools:layout_editor_absoluteX="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/rbtnMap" />
+        <RadioButton
+            android:id="@+id/rbtnMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:editable="false"
+            android:enabled="false"
+            android:text="Карты"
+            app:layout_constraintTop_toBottomOf="@+id/rbtnNum"
+            tools:layout_editor_absoluteX="8dp" />
+
+        <RadioButton
+            android:id="@+id/rbtnCont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:enabled="false"
+            android:text="Сталицы и Страны"
+            app:layout_constraintTop_toBottomOf="@+id/rbtnMap"
+            tools:layout_editor_absoluteX="8dp" />
+
+    </RadioGroup>
 
     <CheckBox
         android:id="@+id/chkMap"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:elevation="2dp"
         android:text="Реклама"
-        android:layout_marginStart="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/rbtnMap"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/rbtnPass" />
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="16dp" />
 
     <CheckBox
         android:id="@+id/chkCont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:text="Реклама"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/chkMap"
-        app:layout_constraintLeft_toRightOf="@+id/rbtnCont"
-        android:layout_marginLeft="8dp" />
-
-    <ListView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <EditText
         android:id="@+id/editNumVar"
-        android:layout_width="23dp"
-        android:layout_height="27dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:ems="1"
         android:inputType="number"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <SeekBar
         android:id="@+id/seekNumVar"
@@ -119,13 +119,14 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:text="Кол-во вариантов"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rbtnCont"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontal_bias="0.52"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <LinearLayout
         android:id="@+id/layNum"
@@ -284,10 +285,6 @@
         android:id="@+id/layName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
         android:orientation="vertical"
         android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -307,10 +304,8 @@
         android:id="@+id/layMap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="0dp"
         android:orientation="vertical"
+        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layName">
@@ -340,9 +335,25 @@
             app:layout_constraintLeft_toLeftOf="parent"
             tools:layout_editor_absoluteY="905dp" />
 
+        <SeekBar
+            android:id="@+id/seekMapMin"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_weight="1"
+            android:max="54"
+            android:progress="3"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_editor_absoluteY="905dp" />
+
         <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
 
             <RadioButton
                 android:id="@+id/rbtnMapPict"
@@ -366,24 +377,108 @@
                 android:text="Все" />
         </RadioGroup>
 
-        <SeekBar
-            android:id="@+id/seekMapMin"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:layout_marginStart="0dp"
-            android:layout_weight="1"
-            android:max="54"
-            android:progress="3"
-            app:layout_constraintLeft_toLeftOf="parent"
-            tools:layout_editor_absoluteY="905dp" />
-
         <TextView
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layCont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/layMap"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="8dp"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <RadioButton
+                android:id="@+id/rbtnCont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Страны" />
+
+            <RadioButton
+                android:id="@+id/rbtnCap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Столицы" />
+
+            <RadioButton
+                android:id="@+id/rbtnContCap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Столицы и Страны" />
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/layCont">
+
+            <RadioButton
+                android:id="@+id/rbtnWorld"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Весь мир" />
+
+            <RadioButton
+                android:id="@+id/rbtnEvropa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Европа" />
+
+            <RadioButton
+                android:id="@+id/rbtnAsia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Азия" />
+
+            <RadioButton
+                android:id="@+id/rbtnAfrica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fadeScrollbars="false"
+                android:text="Африка" />
+
+            <RadioButton
+                android:id="@+id/rbtnAmerica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Америка" />
+
+            <RadioButton
+                android:id="@+id/rbtnAustralia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Австралия" />
+        </RadioGroup>
 
     </LinearLayout>
 
