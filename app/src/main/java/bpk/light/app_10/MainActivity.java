@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -22,14 +23,15 @@ public class MainActivity extends AppCompatActivity {
     RadioButton rbtnMap, rbtnCont;
     RadioGroup mainGroup, passGroup;
     CheckBox chkMap, chkCont;
-    SeekBar seekNumVar, seekNumMin, seekNumMax, seekPassLen;
-    EditText editNumVar, editNumMin, editNumMax, editPassLen;
+    SeekBar seekNumVar, seekNumMin, seekNumMax, seekPassLen, seekMapMin, seekMapMax;
+    EditText editNumVar, editNumMin, editNumMax, editPassLen, editNameText;
     LinearLayout layNum, layPass, layName, layMap, layCont;
     int typeRand = 0;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     String LL = "LightLog";
     Switch swBool, swPassTwoReg;
+    ImageView viewMap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +47,14 @@ public class MainActivity extends AppCompatActivity {
         seekNumVar = (SeekBar) findViewById(R.id.seekNumVar);
         seekNumMin = (SeekBar) findViewById(R.id.seekNumMin);
         seekNumMax = (SeekBar) findViewById(R.id.seekNumMax);
+        seekMapMin = (SeekBar) findViewById(R.id.seekMapMin);
+        seekMapMax = (SeekBar) findViewById(R.id.seekMapMax);
         seekPassLen = (SeekBar) findViewById(R.id.seekPassLen);
         editNumVar = (EditText) findViewById(R.id.editNumVar);
         editNumMin = (EditText) findViewById(R.id.editNumMin);
         editNumMax = (EditText) findViewById(R.id.editNumMax);
         editPassLen = (EditText) findViewById(R.id.editPassLen);
+        editNameText = (EditText) findViewById(R.id.editNameText);
         layNum = (LinearLayout) findViewById(R.id.layNum);
         layPass = (LinearLayout) findViewById(R.id.layPass);
         layName = (LinearLayout) findViewById(R.id.layName);
@@ -57,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         layCont = (LinearLayout) findViewById(R.id.layCont);
         mainGroup = (RadioGroup) findViewById(R.id.mainGroup);
         passGroup = (RadioGroup) findViewById(R.id.passGroup);
+        viewMap = (ImageView) findViewById(R.id.viewMap);
 //------------------------Main option---------------------------------------------------------
         mainGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -381,6 +387,116 @@ public class MainActivity extends AppCompatActivity {
                     editor.commit();
                     Log.d(LL,"PassTwoReg = false");
                 }
+            }
+        });
+        //------------------------Name menu------------------------------------------
+        editor.putString("PassTwoReg",editNameText.getText().toString());
+        editor.commit();
+        //-----------------------Map menu-------------------------------------------
+        seekMapMin.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                switch (seekMapMin.getProgress()){
+                    case 0:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.six);
+                        break;
+                    case 1:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.seven);
+                        break;
+                    case 2:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.eight);
+                        break;
+                    case 3:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.nine);
+                        break;
+                    case 4:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.ten);
+                        break;
+                    case 5:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.vale);
+                        break;
+                    case 6:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.dam);
+                        break;
+                    case 7:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.korol);
+                        break;
+                    case 8:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.tuz);
+                        break;
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                viewMap.setVisibility(View.INVISIBLE);
+            }
+        });
+        seekMapMax.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                switch (seekMapMax.getProgress()){
+                    case 0:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.six);
+                        break;
+                    case 1:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.seven);
+                        break;
+                    case 2:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.eight);
+                        break;
+                    case 3:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.nine);
+                        break;
+                    case 4:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.ten);
+                        break;
+                    case 5:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.vale);
+                        break;
+                    case 6:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.dam);
+                        break;
+                    case 7:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.korol);
+                        break;
+                    case 8:
+                        viewMap.setVisibility(View.VISIBLE);
+                        viewMap.setImageResource(R.drawable.tuz);
+                        break;
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                viewMap.setVisibility(View.INVISIBLE);
             }
         });
     }

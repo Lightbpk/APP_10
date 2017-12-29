@@ -224,11 +224,7 @@
         android:id="@+id/layPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="-211dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -367,12 +363,21 @@
             android:text="Дима, Вася, Митя, Игорь, Лена, Таня, Аня, Оля, Маша" />
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/viewMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:srcCompat="@drawable/dam"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp" />
+
     <LinearLayout
         android:id="@+id/layMap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -392,14 +397,14 @@
             android:text="Число карт" />
 
         <SeekBar
-            android:id="@+id/seekBar8"
+            android:id="@+id/seekMapMax"
             style="@style/Widget.AppCompat.SeekBar.Discrete"
             android:layout_width="330dp"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_marginLeft="0dp"
             android:layout_marginStart="0dp"
-            android:max="54"
-            android:progress="15"
+            android:max="9"
+            android:progress="3"
             app:layout_constraintLeft_toLeftOf="parent"
             tools:layout_editor_absoluteY="905dp" />
 
@@ -407,11 +412,11 @@
             android:id="@+id/seekMapMin"
             style="@style/Widget.AppCompat.SeekBar.Discrete"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginLeft="0dp"
             android:layout_marginStart="0dp"
             android:layout_weight="1"
-            android:max="54"
+            android:max="9"
             android:progress="3"
             app:layout_constraintLeft_toLeftOf="parent"
             tools:layout_editor_absoluteY="905dp" />
@@ -444,12 +449,6 @@
                 android:layout_weight="1"
                 android:text="Все" />
         </RadioGroup>
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
 
     </LinearLayout>
 
