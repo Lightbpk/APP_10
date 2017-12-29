@@ -1,5 +1,6 @@
 package bpk.light.app_10;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.IdRes;
@@ -9,6 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -21,17 +23,18 @@ import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
     RadioButton rbtnMap, rbtnCont;
-    RadioGroup mainGroup, passGroup;
+    RadioGroup mainGroup, passGroup, mapGroup, contryTypeGroup, contrySelectGroup;
     CheckBox chkMap, chkCont;
     SeekBar seekNumVar, seekNumMin, seekNumMax, seekPassLen, seekMapMin, seekMapMax;
     EditText editNumVar, editNumMin, editNumMax, editPassLen, editNameText;
     LinearLayout layNum, layPass, layName, layMap, layCont;
-    int typeRand = 0;
+    int  miniMap1,miniMap2,miniMap3,miniMap4;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     String LL = "LightLog";
     Switch swBool, swPassTwoReg;
     ImageView viewMap;
+    Button btnGen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +65,11 @@ public class MainActivity extends AppCompatActivity {
         layCont = (LinearLayout) findViewById(R.id.layCont);
         mainGroup = (RadioGroup) findViewById(R.id.mainGroup);
         passGroup = (RadioGroup) findViewById(R.id.passGroup);
+        mapGroup = (RadioGroup) findViewById(R.id.mapGroup);
+        contryTypeGroup = (RadioGroup) findViewById(R.id.contryTypeGroup);
+        contrySelectGroup = (RadioGroup) findViewById(R.id.contrySelectGroup);
         viewMap = (ImageView) findViewById(R.id.viewMap);
+        btnGen = (Button)findViewById(R.id.btnGen);
 //------------------------Main option---------------------------------------------------------
         mainGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -76,7 +83,8 @@ public class MainActivity extends AppCompatActivity {
                         layName.setVisibility(View.INVISIBLE);
                         layMap.setVisibility(View.INVISIBLE);
                         layCont.setVisibility(View.INVISIBLE);
-                        typeRand = 1;
+                        editor.putInt("typeRand",1);
+                        editor.commit();
                         break;
                     case R.id.rbtnPass:
                         layNum.setVisibility(View.INVISIBLE);
@@ -84,7 +92,8 @@ public class MainActivity extends AppCompatActivity {
                         layName.setVisibility(View.INVISIBLE);
                         layMap.setVisibility(View.INVISIBLE);
                         layCont.setVisibility(View.INVISIBLE);
-                        typeRand = 2;
+                        editor.putInt("typeRand",2);
+                        editor.commit();
                         break;
                     case R.id.rbtnName:
                         layNum.setVisibility(View.INVISIBLE);
@@ -92,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
                         layName.setVisibility(View.VISIBLE);
                         layMap.setVisibility(View.INVISIBLE);
                         layCont.setVisibility(View.INVISIBLE);
-                        typeRand = 3;
+                        editor.putInt("typeRand",3);
+                        editor.commit();
                         break;
                     case R.id.rbtnMap:
                         layNum.setVisibility(View.INVISIBLE);
@@ -100,7 +110,8 @@ public class MainActivity extends AppCompatActivity {
                         layName.setVisibility(View.INVISIBLE);
                         layMap.setVisibility(View.VISIBLE);
                         layCont.setVisibility(View.INVISIBLE);
-                        typeRand = 4;
+                        editor.putInt("typeRand",4);
+                        editor.commit();
                         break;
                     case R.id.rbtnCont:
                         layNum.setVisibility(View.INVISIBLE);
@@ -108,7 +119,8 @@ public class MainActivity extends AppCompatActivity {
                         layName.setVisibility(View.INVISIBLE);
                         layMap.setVisibility(View.INVISIBLE);
                         layCont.setVisibility(View.VISIBLE);
-                        typeRand = 5;
+                        editor.putInt("typeRand",5);
+                        editor.commit();
                         break;
                 }
             }
@@ -393,45 +405,102 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("PassTwoReg",editNameText.getText().toString());
         editor.commit();
         //-----------------------Map menu-------------------------------------------
+        mapGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                switch (checkedId){
+                    case -1:
+                        break;
+                    case R.id.rbtnMapPict:
+                        miniMap1 = R.drawable.vale;
+                        miniMap2 = R.drawable.dam;
+                        miniMap3 = R.drawable.korol;
+                        miniMap4 = R.drawable.tuz;
+                        seekMapMin.setMax(4);
+                        seekMapMax.setMax(4);
+                        editor.putInt("MapType", 1);
+                        editor.commit();
+                        break;
+                    case R.id.rbtnMapNum:
+                        miniMap1 = R.drawable.six;
+                        miniMap2 = R.drawable.seven;
+                        miniMap3 = R.drawable.eight;
+                        miniMap4 = R.drawable.nine;
+                        seekMapMin.setMax(5);
+                        seekMapMax.setMax(5);
+                        editor.putInt("MapType", 2);
+                        editor.commit();
+                        break;
+                    case R.id.rbtnMapAll:
+                        miniMap1 = R.drawable.six;
+                        miniMap2 = R.drawable.seven;
+                        miniMap3 = R.drawable.eight;
+                        miniMap4 = R.drawable.nine;
+                        seekMapMin.setMax(9);
+                        seekMapMax.setMax(9);
+                        editor.putInt("MapType", 3);
+                        editor.commit();
+                        break;
+                }
+            }
+        });
         seekMapMin.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 switch (seekMapMin.getProgress()){
                     case 0:
                         viewMap.setVisibility(View.VISIBLE);
-                        viewMap.setImageResource(R.drawable.six);
+                        viewMap.setImageResource(miniMap1);
+                        editor.putInt("MapMin",seekMapMin.getProgress());
+                        editor.commit();
                         break;
                     case 1:
                         viewMap.setVisibility(View.VISIBLE);
-                        viewMap.setImageResource(R.drawable.seven);
+                        viewMap.setImageResource(miniMap2);
+                        editor.putInt("MapMin",seekMapMin.getProgress());
+                        editor.commit();
                         break;
                     case 2:
                         viewMap.setVisibility(View.VISIBLE);
-                        viewMap.setImageResource(R.drawable.eight);
+                        viewMap.setImageResource(miniMap3);
+                        editor.putInt("MapMin",seekMapMin.getProgress());
+                        editor.commit();
                         break;
                     case 3:
                         viewMap.setVisibility(View.VISIBLE);
-                        viewMap.setImageResource(R.drawable.nine);
+                        viewMap.setImageResource(miniMap4);
+                        editor.putInt("MapMin",seekMapMin.getProgress());
+                        editor.commit();
                         break;
                     case 4:
                         viewMap.setVisibility(View.VISIBLE);
                         viewMap.setImageResource(R.drawable.ten);
+                        editor.putInt("MapMin",seekMapMin.getProgress());
+                        editor.commit();
                         break;
                     case 5:
                         viewMap.setVisibility(View.VISIBLE);
                         viewMap.setImageResource(R.drawable.vale);
+                        editor.putInt("MapMin",seekMapMin.getProgress());
+                        editor.commit();
                         break;
                     case 6:
                         viewMap.setVisibility(View.VISIBLE);
                         viewMap.setImageResource(R.drawable.dam);
+                        editor.putInt("MapMin",seekMapMin.getProgress());
+                        editor.commit();
                         break;
                     case 7:
                         viewMap.setVisibility(View.VISIBLE);
                         viewMap.setImageResource(R.drawable.korol);
+                        editor.putInt("MapMin",seekMapMin.getProgress());
+                        editor.commit();
                         break;
                     case 8:
                         viewMap.setVisibility(View.VISIBLE);
                         viewMap.setImageResource(R.drawable.tuz);
+                        editor.putInt("MapMin",seekMapMin.getProgress());
+                        editor.commit();
                         break;
                 }
             }
@@ -452,39 +521,56 @@ public class MainActivity extends AppCompatActivity {
                 switch (seekMapMax.getProgress()){
                     case 0:
                         viewMap.setVisibility(View.VISIBLE);
-                        viewMap.setImageResource(R.drawable.six);
+                        viewMap.setImageResource(miniMap1);
+                        editor.putInt("MapMax",seekMapMax.getProgress());
+                        editor.commit();
                         break;
                     case 1:
                         viewMap.setVisibility(View.VISIBLE);
-                        viewMap.setImageResource(R.drawable.seven);
+                        viewMap.setImageResource(miniMap2);
+                        editor.putInt("MapMax",seekMapMax.getProgress());
+                        editor.commit();
                         break;
                     case 2:
                         viewMap.setVisibility(View.VISIBLE);
-                        viewMap.setImageResource(R.drawable.eight);
+                        viewMap.setImageResource(miniMap3);
+                        editor.putInt("MapMax",seekMapMax.getProgress());
+                        editor.commit();
                         break;
                     case 3:
                         viewMap.setVisibility(View.VISIBLE);
-                        viewMap.setImageResource(R.drawable.nine);
+                        viewMap.setImageResource(miniMap4);
+                        editor.putInt("MapMax",seekMapMax.getProgress());
+                        editor.commit();
                         break;
                     case 4:
                         viewMap.setVisibility(View.VISIBLE);
                         viewMap.setImageResource(R.drawable.ten);
+                        editor.putInt("MapMax",seekMapMax.getProgress());
+                        editor.commit();
                         break;
                     case 5:
                         viewMap.setVisibility(View.VISIBLE);
                         viewMap.setImageResource(R.drawable.vale);
+                        editor.putInt("MapMax",seekMapMax.getProgress());
+                        editor.commit();
                         break;
                     case 6:
                         viewMap.setVisibility(View.VISIBLE);
-                        viewMap.setImageResource(R.drawable.dam);
+                        viewMap.setImageResource(R.drawable.dam);editor.putInt("MapMax",seekMapMax.getProgress());
+                        editor.commit();
                         break;
                     case 7:
                         viewMap.setVisibility(View.VISIBLE);
                         viewMap.setImageResource(R.drawable.korol);
+                        editor.putInt("MapMax",seekMapMax.getProgress());
+                        editor.commit();
                         break;
                     case 8:
                         viewMap.setVisibility(View.VISIBLE);
                         viewMap.setImageResource(R.drawable.tuz);
+                        editor.putInt("MapMax",seekMapMax.getProgress());
+                        editor.commit();
                         break;
                 }
             }
@@ -497,6 +583,69 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 viewMap.setVisibility(View.INVISIBLE);
+            }
+        });
+        //-------------------Contry menu-----------------------
+        contryTypeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                switch (checkedId){
+                    case -1:
+                        break;
+                    case R.id.rbtnContCont:
+                        editor.putInt("ContType", 1);
+                        editor.commit();
+                        break;
+                    case R.id.rbtnCap:
+                        editor.putInt("ContType", 2);
+                        editor.commit();
+                        break;
+                    case R.id.rbtnContCap:
+                        editor.putInt("ContType", 3);
+                        editor.commit();
+                        break;
+                }
+            }
+        });
+        contrySelectGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                switch (checkedId){
+                    case -1:
+                        break;
+                    case R.id.rbtnWorld:
+                        editor.putInt("ContType", 1);
+                        editor.commit();
+                        break;
+                    case R.id.rbtnEvropa:
+                        editor.putInt("ContType", 2);
+                        editor.commit();
+                        break;
+                    case R.id.rbtnAsia:
+                        editor.putInt("ContType", 3);
+                        editor.commit();
+                        break;
+                    case R.id.rbtnAfrica:
+                        editor.putInt("ContType", 4);
+                        editor.commit();
+                        break;
+                    case R.id.rbtnAmerica:
+                        editor.putInt("ContType", 5);
+                        editor.commit();
+                        break;
+                    case R.id.rbtnAustralia:
+                        editor.putInt("ContType", 6);
+                        editor.commit();
+                        break;
+                }
+            }
+        });
+        //----------------------------------------------------------
+        btnGen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TwoActivity.class);
+                startActivity(intent);
             }
         });
     }
