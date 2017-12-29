@@ -339,47 +339,32 @@ public class MainActivity extends AppCompatActivity {
                     case -1:
                         break;
                     case R.id.rbtnPassChar:
-                        editor.putBoolean("PassChar",true);
-                        editor.putBoolean("PassCustom",false);
-                        editor.putBoolean("PassNumChar",false);
-                        editor.putBoolean("PassNumCharSym",false);
-                        editor.putBoolean("PassGraf",false);
+                        editor.putInt("PassType",2);
                         editor.commit();
                         Log.d(LL,"PassChar true");
                         break;
                     case R.id.rbtnPassCustom:
-                        editor.putBoolean("PassChar",false);
-                        editor.putBoolean("PassCustom",true);
-                        editor.putBoolean("PassNumChar",false);
-                        editor.putBoolean("PassNumCharSym",false);
-                        editor.putBoolean("PassGraf",false);
+                        editor.putInt("PassType",5);
                         editor.commit();
                         Log.d(LL,"PassCustom true");
                         break;
                     case R.id.rbtnPassNumChar:
-                        editor.putBoolean("PassChar",false);
-                        editor.putBoolean("PassCustom",false);
-                        editor.putBoolean("PassNumChar",true);
-                        editor.putBoolean("PassNumCharSym",false);
-                        editor.putBoolean("PassGraf",false);
+                        editor.putInt("PassType",3);
                         editor.commit();
                         Log.d(LL,"PassNumChar true");
                         break;
                     case R.id.rbtnPassNumCharSym:
-                        editor.putBoolean("PassChar",false);
-                        editor.putBoolean("PassCustom",false);
-                        editor.putBoolean("PassNumChar",false);
-                        editor.putBoolean("PassNumCharSym",true);
-                        editor.putBoolean("PassGraf",false);
+                        editor.putInt("PassType",4);
                         editor.commit();
                         Log.d(LL,"PassNumCharSym true");
                         break;
                     case R.id.rbtnPassGraf:
-                        editor.putBoolean("PassChar",false);
-                        editor.putBoolean("PassCustom",false);
-                        editor.putBoolean("PassNumChar",false);
-                        editor.putBoolean("PassNumCharSym",false);
-                        editor.putBoolean("PassGraf",true);
+                        editor.putInt("PassType",6);
+                        editor.commit();
+                        Log.d(LL,"PassGraf true");
+                        break;
+                    case R.id.rbtnPassNum:
+                        editor.putInt("PassType",1);
                         editor.commit();
                         Log.d(LL,"PassGraf true");
                         break;
@@ -402,7 +387,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //------------------------Name menu------------------------------------------
-        editor.putString("PassTwoReg",editNameText.getText().toString());
+        editor.putString("Names",editNameText.getText().toString());
         editor.commit();
         //-----------------------Map menu-------------------------------------------
         mapGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -418,7 +403,7 @@ public class MainActivity extends AppCompatActivity {
                         miniMap4 = R.drawable.tuz;
                         seekMapMin.setMax(4);
                         seekMapMax.setMax(4);
-                        editor.putInt("MapType", 1);
+                        editor.putInt("MapType", 3);
                         editor.commit();
                         break;
                     case R.id.rbtnMapNum:
@@ -438,7 +423,7 @@ public class MainActivity extends AppCompatActivity {
                         miniMap4 = R.drawable.nine;
                         seekMapMin.setMax(9);
                         seekMapMax.setMax(9);
-                        editor.putInt("MapType", 3);
+                        editor.putInt("MapType", 1);
                         editor.commit();
                         break;
                 }
@@ -614,27 +599,27 @@ public class MainActivity extends AppCompatActivity {
                     case -1:
                         break;
                     case R.id.rbtnWorld:
-                        editor.putInt("ContType", 1);
+                        editor.putInt("ContSelect", 1);
                         editor.commit();
                         break;
                     case R.id.rbtnEvropa:
-                        editor.putInt("ContType", 2);
+                        editor.putInt("ContSelect", 2);
                         editor.commit();
                         break;
                     case R.id.rbtnAsia:
-                        editor.putInt("ContType", 3);
+                        editor.putInt("ContSelect", 3);
                         editor.commit();
                         break;
                     case R.id.rbtnAfrica:
-                        editor.putInt("ContType", 4);
+                        editor.putInt("ContSelect", 4);
                         editor.commit();
                         break;
                     case R.id.rbtnAmerica:
-                        editor.putInt("ContType", 5);
+                        editor.putInt("ContSelect", 5);
                         editor.commit();
                         break;
                     case R.id.rbtnAustralia:
-                        editor.putInt("ContType", 6);
+                        editor.putInt("ContSelect", 6);
                         editor.commit();
                         break;
                 }

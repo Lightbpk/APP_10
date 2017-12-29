@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
+            android:checked="true"
             android:text="Число"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -224,7 +225,7 @@
         android:id="@+id/layPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -279,6 +280,14 @@
                 android:layout_height="wrap_content">
 
                 <RadioButton
+                    android:id="@+id/rbtnPassNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Цифры"
+                    android:textSize="12sp" />
+
+                <RadioButton
                     android:id="@+id/rbtnPassChar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -287,11 +296,11 @@
                     android:textSize="12sp" />
 
                 <RadioButton
-                    android:id="@+id/rbtnPassCustom"
+                    android:id="@+id/rbtnPassNumChar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Настраеваемый"
+                    android:text="Цифры и Буквы"
                     android:textSize="12sp" />
 
                 <RadioButton
@@ -305,11 +314,11 @@
                     tools:layout_editor_absoluteY="-31dp" />
 
                 <RadioButton
-                    android:id="@+id/rbtnPassNum"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/rbtnPassCustom"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Цифры"
+                    android:text="Настраеваемый"
                     android:textSize="12sp" />
 
                 <RadioButton
@@ -320,13 +329,6 @@
                     android:text="Графический"
                     android:textSize="12sp" />
 
-                <RadioButton
-                    android:id="@+id/rbtnPassNumChar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Цифры и Буквы"
-                    android:textSize="12sp" />
             </RadioGroup>
 
         </TableRow>
@@ -360,7 +362,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textMultiLine"
-            android:text="Дима, Вася, Митя, Игорь, Лена, Таня, Аня, Оля, Маша" />
+            android:text="Дима,Вася,Митя,Игорь,Лена,Таня,Аня,Оля,Маша" />
     </LinearLayout>
 
     <ImageView
